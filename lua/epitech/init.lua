@@ -1,11 +1,9 @@
 local M = {}
 
-M.setup = function(opts)
-	print("setup")
+local utils = require("epitech.utils")
 
-  vim.keymap.set('n', '<leader>hh', function ()
-    print("Hello")
-  end, { desc = "New epitech header" })
+M.setup = function(opts)
+  vim.keymap.set('n', '<leader>hh', utils.header, { desc = "New epitech header" })
 end
 
 return M
