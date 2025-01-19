@@ -16,7 +16,7 @@ M.header = function()
   local path = vim.api.nvim_buf_get_name(0)
   local current_filetype = vim.bo.filetype
   local splitted_path = M.split(path, "/")
-  local filename = vim.fn.expand("%:p")
+  local filename = vim.fn.expand("%")
 
   P(splitted_path)
 
@@ -26,7 +26,20 @@ M.header = function()
   local project_name = ""
   local description = ""
 
-  local lines = { "Header", "Another line added by the header plugin" }
+  if current_filetype == "c" == false then
+    print("epitech.nvim error: unsupported filetype")
+    return
+  end
+
+  local lines = {
+    "/*",
+    string.format("** EPITECH PROJECT, %d", os.date("%Y")),
+    string.format("** %s", filename),
+    "** File description:",
+    string.format("** %s", filename),
+    "*/",
+    ""
+  }
 
   vim.api.nvim_buf_set_lines(buffer, start_line, end_line, true, lines)
 end
