@@ -18,13 +18,11 @@ M.header = function()
   local splitted_path = M.split(path, "/")
   local filename = vim.fn.expand("%")
 
-  P(splitted_path)
-
   local buffer = 0
   local start_line = 0
   local end_line = 0
-  local project_name = ""
-  local description = ""
+  local project_name = vim.fn.input("Enter a project name", "", "file")
+  local description = vim.fn.input("Enter a description: ", "", "file")
 
   if current_filetype == "c" == false then
     print("epitech.nvim error: unsupported filetype")
@@ -34,9 +32,9 @@ M.header = function()
   local lines = {
     "/*",
     string.format("** EPITECH PROJECT, %d", os.date("%Y")),
-    string.format("** %s", filename),
+    string.format("** %s", project_name),
     "** File description:",
-    string.format("** %s", filename),
+    string.format("** %s", description),
     "*/",
     ""
   }
