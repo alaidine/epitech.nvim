@@ -2,7 +2,7 @@
 
                                                                  *epitech.nvim
 
-This plugin helps you setup files for epitech projects (only work for C for
+This plugin helps you setup files for epitech projects (only works for C for
 now)
 
 vim:tw=78:ts=8:ft=help:norl:

@@ -5,7 +5,7 @@ M.split = function(input, sep)
     sep = "%s"
   end
   local t = {}
-  for str in string.gmatch(input, "([^"..sep.."]+)") do
+  for str in string.gmatch(input, "([^" .. sep .. "]+)") do
     table.insert(t, str)
   end
   return t
@@ -21,7 +21,7 @@ M.header = function()
   local buffer = 0
   local start_line = 0
   local end_line = 0
-  local project_name = vim.fn.input("Enter a project name", "", "file")
+  local project_name = vim.fn.input("Enter a project name: ", "", "file")
   local description = vim.fn.input("Enter a description: ", "", "file")
 
   if current_filetype == "c" == false then
@@ -36,7 +36,7 @@ M.header = function()
     "** File description:",
     string.format("** %s", description),
     "*/",
-    ""
+    "",
   }
 
   vim.api.nvim_buf_set_lines(buffer, start_line, end_line, true, lines)
