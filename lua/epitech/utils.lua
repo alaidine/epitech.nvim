@@ -12,22 +12,18 @@ M.split = function(input, sep)
 end
 
 M.header = function()
-  local supported_filetype = { "c" }
-  local path = vim.api.nvim_buf_get_name(0)
   local current_filetype = vim.bo.filetype
-  local splitted_path = M.split(path, "/")
-  local filename = vim.fn.expand("%")
+
+  if current_filetype == "c" == false then
+    print("epitech.nvim error: unsupported filetype")
+    return
+  end
 
   local buffer = 0
   local start_line = 0
   local end_line = 0
   local project_name = vim.fn.input("Enter a project name: ", "", "file")
   local description = vim.fn.input("Enter a description: ", "", "file")
-
-  if current_filetype == "c" == false then
-    print("epitech.nvim error: unsupported filetype")
-    return
-  end
 
   local lines = {
     "/*",
